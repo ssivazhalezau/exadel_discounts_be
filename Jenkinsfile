@@ -35,6 +35,8 @@ pipeline {
             identity.push('latest')
             webapi.push("${currentBuild.number}")
             webapi.push('latest')
+            mailsender.push("${currentBuild.number}")
+            mailsender.push('latest')
           }
         }
       }
