@@ -15,21 +15,12 @@ pipeline {
       }
     }
 
-    stage ('Build identity') {
+    stage ('Build images') {
       steps {
         script {
           dir("src/Exadel.CrazyPrice") {
             identity = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", '-f Dockerfile.identity .')
-          }
-        }
-      }
-    }
-
-    stage ('Build webapi') {
-      steps {
-        script {
-          dir("src/Exadel.CrazyPrice") {
-            webapi = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", 'Exadel.CrazyPrice.WebApi/')
+            webapi   = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", '-f Dockerfile.webapi .')
           }
         }
       }
