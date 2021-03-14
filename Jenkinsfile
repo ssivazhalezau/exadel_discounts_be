@@ -19,8 +19,9 @@ pipeline {
       steps {
         script {
           dir("src/Exadel.CrazyPrice") {
-            identity = docker.build("${DOCKERHUB_ID}/identity:${currentBuild.number}", '-f Dockerfile.identity .')
-            webapi   = docker.build("${DOCKERHUB_ID}/webapi:${currentBuild.number}", '-f Dockerfile.webapi .')
+            identity   = docker.build("${DOCKERHUB_ID}/identity:${currentBuild.number}", '-f Dockerfile.identity .')
+            webapi     = docker.build("${DOCKERHUB_ID}/webapi:${currentBuild.number}", '-f Dockerfile.webapi .')
+            mailsender = docker.build("${DOCKERHUB_ID}/mailsender:${currentBuild.number}", '-f Dockerfile.mailsender .')
           }
         }
       }
