@@ -6,8 +6,8 @@ EXPOSE 8001
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS publish
 WORKDIR /src
-COPY . .
-RUN dotnet restore --verbosity diag 'Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj'
+COPY ../ .
+RUN dotnet restore 'Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj'
 WORKDIR "/src/Exadel.CrazyPrice.IdentityServer"
 RUN dotnet publish "Exadel.CrazyPrice.IdentityServer.csproj" -c Release -o /app
 
