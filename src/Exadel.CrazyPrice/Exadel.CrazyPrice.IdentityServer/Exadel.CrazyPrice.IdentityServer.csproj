@@ -5,7 +5,7 @@
     <UserSecretsId>d680158d-e58e-4002-b511-8b8348a81d24</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="5.0.1" />
     <PackageReference Include="IdentityServer4" Version="4.1.1" />
@@ -17,20 +17,20 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Exadel.CrazyPrice.Common\Exadel.CrazyPrice.Common.csproj" />
-    <ProjectReference Include="..\Exadel.CrazyPrice.Data\Exadel.CrazyPrice.Data.csproj" />
-    <ProjectReference Include="..\Exadel.CrazyPrice.Services\Common\Cryptography\Cryptography.csproj" />
+    <ProjectReference Include="../Exadel.CrazyPrice.Common/Exadel.CrazyPrice.Common.csproj" />
+    <ProjectReference Include="../Exadel.CrazyPrice.Data/Exadel.CrazyPrice.Data.csproj" />
+    <ProjectReference Include="../Exadel.CrazyPrice.Services/Common/Cryptography/Cryptography.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Update="aspnetapp-root-cert.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
+
   <ProjectExtensions>
 	  <VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio>
   </ProjectExtensions>
-</Project> 
+</Project>
