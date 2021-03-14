@@ -2,7 +2,6 @@ pipeline {
   agent { label '!master' }
 
   environment {
-    // GITHUB_URL=   'https://github.com/ssivazhalezau/exadel_discounts_be.git'
     DOCKERHUB_ID= 'ssivazhalezau'
     DOCKERHUB_CR= 'a19159bb-082d-4be5-90b9-ca05a582eb06'
   }
