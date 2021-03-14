@@ -6,7 +6,7 @@ EXPOSE 8001
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["Exadel.CrazyPrice/Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj", "Exadel.CrazyPrice/Exadel.CrazyPrice.IdentityServer/"]
+COPY ["Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj", "Exadel.CrazyPrice.IdentityServer/"]
 RUN dotnet restore 'Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj'
 COPY . .
 WORKDIR "/src/Exadel.CrazyPrice.IdentityServer"
