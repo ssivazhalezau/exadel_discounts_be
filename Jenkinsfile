@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           dir("src/") {
-            identity = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", 'Exadel.CrazyPrice/Exadel.CrazyPrice.IdentityServer/')
+            identity = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", ' -f Exadel.CrazyPrice.IdentityServer/ Exadel.CrazyPrice/')
           }
         }
       }
