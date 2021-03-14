@@ -19,8 +19,8 @@ pipeline {
       steps {
         script {
           dir("src/Exadel.CrazyPrice") {
-            identity = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", '-f Dockerfile.identity .')
-            webapi   = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", '-f Dockerfile.webapi .')
+            identity = docker.build("${DOCKERHUB_ID}/identity:${currentBuild.number}", '-f Dockerfile.identity .')
+            webapi   = docker.build("${DOCKERHUB_ID}/webapi:${currentBuild.number}", '-f Dockerfile.webapi .')
           }
         }
       }
@@ -29,7 +29,7 @@ pipeline {
     stage ('Push images') {
       steps {
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', DOCKERHUB_CR) {
+          docker.withRegistry('https://registry.hub.docker.com', "${DOCKERHUB_CR}") {
             identity.push("${currentBuild.number}")
             identity.push('latest')
             webapi.push("${currentBuild.number}")
