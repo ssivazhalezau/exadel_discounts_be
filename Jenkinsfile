@@ -18,8 +18,8 @@ pipeline {
     stage ('Build identity') {
       steps {
         script {
-          dir("src/Exadel.CrazyPrice/Exadel.CrazyPrice.IdentityServer") {
-            identity = docker.build("${DOCKERHUB_ID}:${currentBuild.number}")
+          dir("src/Exadel.CrazyPrice") {
+            identity = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", 'Exadel.CrazyPrice.IdentityServer/Dockerfile')
           }
         }
       }
@@ -28,8 +28,8 @@ pipeline {
     stage ('Build webapi') {
       steps {
         script {
-          dir("src/Exadel.CrazyPrice/Exadel.CrazyPrice.WebApi") {
-            webapi = docker.build("${DOCKERHUB_ID}:${currentBuild.number}")
+          dir("src/Exadel.CrazyPrice") {
+            webapi = docker.build("${DOCKERHUB_ID}:${currentBuild.number}", 'Exadel.CrazyPrice.WebApi/Dockerfile')
           }
         }
       }
