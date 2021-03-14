@@ -4,11 +4,15 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
 WORKDIR /app
 EXPOSE 8001
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS publish
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY . ./
+COPY ["Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj", "Exadel.CrazyPrice.IdentityServer/"]
 RUN dotnet restore 'Exadel.CrazyPrice.IdentityServer/Exadel.CrazyPrice.IdentityServer.csproj'
+COPY . .
 WORKDIR "/src/Exadel.CrazyPrice.IdentityServer"
+RUN dotnet build "Exadel.CrazyPrice.IdentityServer.csproj" -c Release -o /app
+
+FROM build AS publish
 RUN dotnet publish "Exadel.CrazyPrice.IdentityServer.csproj" -c Release -o /app
 
 FROM base AS final
