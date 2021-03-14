@@ -8,14 +8,11 @@ pipeline {
   }
 
   stages {
-    stage ('Cleanup') {
+    stage ('Checkout source') {
       steps {
         cleanWs()
+        checkout scm
       }
-    }
-
-    stage ('Checkout source') {
-      checkout scm
     }
 
     stage ('Build identity') {
